@@ -2,26 +2,31 @@ package main
 
 import "fmt"
 
-var _ Plugin = (*HelloWorld)(nil)
+// HelloWorldPlugin implements the Plugin interface for a simple Helloworld plugin.
+type HelloWorldPlugin struct{}
 
-type HelloWorld struct{}
+func (p *HelloWorldPlugin) GetName() string {
+	return "helloworld"
+}
 
-func (h *HelloWorld) GetExpectedArgs() []string {
+func (p *HelloWorldPlugin) GetExpectedArgs() []string {
+	// This simple plugin does not expect any arguments
 	return []string{}
 }
 
-func (h *HelloWorld) GetHelp() string {
-	return "Prints 'Hello, World!' to the console."
+func (p *HelloWorldPlugin) GetHelp() string {
+	return "Prints 'Hello, World!' message"
 }
 
-func (h *HelloWorld) Initialize() error {
-	fmt.Println("HelloWorld plugin initialized")
+func (p *HelloWorldPlugin) Initialize() error {
+	// Initialization logic here, if necessary
 	return nil
 }
 
-func (h *HelloWorld) Execute(args map[string]string) error {
-	fmt.Println("Hello, World from the plugin!")
+func (p *HelloWorldPlugin) Execute(args map[string]string) error {
+	fmt.Println("Hello, World!")
 	return nil
 }
 
-var Plugin HelloWorld
+// Export the plugin instance
+var Plugin HelloWorldPlugin
