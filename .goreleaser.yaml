@@ -1,0 +1,23 @@
+builds:
+  - binary: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.so"
+    main: ./main.go
+    goos:
+      - darwin
+      - linux
+
+    goarch:
+      - arm64
+      - amd64
+
+    env:
+      - CGO_ENABLED=1
+
+    flags:
+      - -mod=vendor
+      - -buildmode=plugin
+
+release:
+  prerelease: auto
+
+checksum:
+  name_template: 'checksums.txt'
