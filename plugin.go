@@ -7,14 +7,14 @@ import (
 	"github.com/renatoaraujo/modular-helloworld-plugin/internal"
 )
 
-// Plugin implements the Plugin interface for a simple Hello world plugin.
-type Plugin struct {
+// HelloWorldPlugin implements the HelloWorldPlugin interface for a simple Hello world plugin.
+type HelloWorldPlugin struct {
 	name string
 	help string
 }
 
 // LoadConfiguration Loads the configuration in the pkl files
-func (p *Plugin) LoadConfiguration() {
+func (p *HelloWorldPlugin) LoadConfiguration() {
 	cfg, err := pluginconfig.LoadFromPath(context.Background(), "pkl/PluginDefinition.pkl")
 	if err != nil {
 		panic(err)
@@ -23,25 +23,28 @@ func (p *Plugin) LoadConfiguration() {
 	p.help = cfg.Help
 }
 
-func (p *Plugin) GetName() string {
+func (p *HelloWorldPlugin) GetName() string {
 	return p.name
 }
 
-func (p *Plugin) GetExpectedArgs() []string {
+func (p *HelloWorldPlugin) GetExpectedArgs() []string {
 	return []string{"name"}
 }
 
-func (p *Plugin) GetHelp() string {
+func (p *HelloWorldPlugin) GetHelp() string {
 	return p.help
 }
 
-func (p *Plugin) Initialize() error {
+func (p *HelloWorldPlugin) Initialize() error {
 	// Initialization logic here, if necessary
 	return nil
 }
 
-func (p *Plugin) Execute(args map[string]string) error {
+func (p *HelloWorldPlugin) Execute(args map[string]string) error {
 	service := internal.NewService()
 	service.SayHello(args["name"])
 	return nil
 }
+
+// Export the plugin instance
+var Plugin HelloWorldPlugin
