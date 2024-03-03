@@ -11,7 +11,7 @@ builds:
       - CGO_ENABLED=1
     buildmode: plugin
     no_main_check: true
-    main: helloworld
+    main: plugin.go
 
 release:
   prerelease: auto
