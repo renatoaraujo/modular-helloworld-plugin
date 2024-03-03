@@ -1,6 +1,5 @@
 builds:
   - binary: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.so"
-    main: ./main.go
     goos:
       - darwin
       - linux
