@@ -1,4 +1,4 @@
-package helloworld
+package main
 
 import (
 	"context"
@@ -28,8 +28,7 @@ func (p *Plugin) GetName() string {
 }
 
 func (p *Plugin) GetExpectedArgs() []string {
-	// This simple plugin does not expect any arguments
-	return []string{}
+	return []string{"name"}
 }
 
 func (p *Plugin) GetHelp() string {
