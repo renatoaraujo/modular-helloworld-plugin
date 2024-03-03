@@ -1,18 +1,8 @@
 builds:
-  - binary: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.so"
-    goos:
-      - darwin
-      - linux
-
-    goarch:
-      - arm64
-      - amd64
-
-    env:
-      - CGO_ENABLED=1
-
-    flags:
-      - -buildmode=plugin
+  - id: "plugin"
+    binary: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.so"
+    buildmode: plugin
+    no_main_check: true
 
 release:
   prerelease: auto
