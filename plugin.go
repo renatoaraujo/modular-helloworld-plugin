@@ -1,8 +1,8 @@
-package main
+package helloworld_plugin
 
 import "fmt"
 
-// HelloWorldPlugin implements the Plugin interface for a simple Helloworld plugin.
+// HelloWorldPlugin implements the Plugin interface for a simple Hello world plugin.
 type HelloWorldPlugin struct{}
 
 func (p *HelloWorldPlugin) GetName() string {
@@ -28,5 +28,5 @@ func (p *HelloWorldPlugin) Execute(args map[string]string) error {
 	return nil
 }
 
-// Export the plugin instance
+// Plugin Export the plugin instance
 var Plugin HelloWorldPlugin
