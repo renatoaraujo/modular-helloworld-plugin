@@ -1,7 +1,10 @@
-@go.Package { name = "github.com/renatoaraujo/modular-helloworld-plugin/gen/pluginconfig" }
-module modular.org.PluginConfig
+@go.Package { name = "github.com/renatoaraujo/modular-helloworld-plugin/config "}
+module config
 
 import "package://pkg.pkl-lang.org/pkl-go/pkl.golang@0.5.3#/go.pkl"
+import "package://pkg.pkl-lang.org/github.com/renatoaraujo/modular/modular@0.1.8#/modular.pkl"
 
-name: String
-help: String
+Helloworld: PluginMetadata = new {
+  name = "helloworld"
+  description = "This is a helloworld plugin"
+}

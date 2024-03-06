@@ -1,4 +1,0 @@
-amends "./PluginConfig.pkl"
-
-name = "helloworld"
-help = "This is a simple hello world plugin!"

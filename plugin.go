@@ -1,26 +1,18 @@
 package main
 
 import (
-	"context"
-
-	"github.com/renatoaraujo/modular-helloworld-plugin/gen/pluginconfig"
+	"embed"
 	"github.com/renatoaraujo/modular-helloworld-plugin/internal"
 )
 
+//go:embed pkl/PluginConfig.pkl
+var cfg embed.FS
+
 // HelloWorldPlugin implements the HelloWorldPlugin interface for a simple Hello world plugin.
 type HelloWorldPlugin struct {
-	name string
-	help string
-}
-
-// LoadConfiguration Loads the configuration in the pkl files
-func (p *HelloWorldPlugin) LoadConfiguration() {
-	cfg, err := pluginconfig.LoadFromPath(context.Background(), "pkl/PluginDefinition.pkl")
-	if err != nil {
-		panic(err)
-	}
-	p.name = cfg.Name
-	p.help = cfg.Help
+	initialized bool
+	name        string
+	help        string
 }
 
 func (p *HelloWorldPlugin) GetName() string {
@@ -36,7 +28,8 @@ func (p *HelloWorldPlugin) GetHelp() string {
 }
 
 func (p *HelloWorldPlugin) Initialize() error {
-	// Initialization logic here, if necessary
+	//sm, _ := cfg.ReadDir("pkl/PluginConfig.pkl")
+	//config.LoadFromPath(context.Background(), sm)
 	return nil
 }
 
